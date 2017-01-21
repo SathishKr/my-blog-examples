@@ -1,0 +1,17 @@
+== Camel FTP Example
+
+A very simple example which demonstrates the Camel FTPComponent and JMSComponent based camel route as
+a normal Camel Application
+
+=== Setup and Running
+
+
+To make this application run we need to setup a small FTP server, the source folder has a Vagrantfile which
+can be used to spinup small CentOS server which will serve as a FTP server for this demo.  Use the command
+`vagrant up` from the source folder to start he server and setup a sample FTP folder called `orders` with
+some example files, the vagrant sync is already setup, so you can add the files to the orders folder in the
+source tree to see it synched with Vagrant box under `/home/vagrant/orders` which will be used by the Camel
+FTP component
+
+Once the FTP server is up you can run the application using `mvn spring-boot:run` to start the Camel route
+and start processing the files FTP server

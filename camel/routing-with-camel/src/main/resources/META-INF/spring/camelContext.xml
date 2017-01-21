@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+
+         http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+  <!-- context:property-placeholder location="classpath:application.properties"
+                                ignore-resource-not-found="true"/ -->
+
+  <camelContext id="camel-orders" xmlns="http://camel.apache.org/schema/spring">
+
+    <propertyPlaceholder id="properties" location="classpath:application.properties"/>
+    <routeBuilder ref="myRouteBuilder"/>
+
+  </camelContext>
+
+  <bean id="myRouteBuilder" class="org.workspace7.camel.rap.routes.MyRouteBuilder"/>
+  <bean id="orderCsvFilter" class="org.workspace7.camel.rap.filters.OrderCsvFileFilter"/>
+
+  <bean id="jms" class="org.apache.camel.component.jms.JmsComponent">
+    <property name="connectionFactory">
+      <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="vm://localhost"/>
+      </bean>
+    </property>
+  </bean>
+
+</beans>

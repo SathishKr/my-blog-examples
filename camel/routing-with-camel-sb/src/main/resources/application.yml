@@ -1,0 +1,11 @@
+ftp:
+  uri: ftp://192.168.56.50/orders?username=vagrant&password=vagrant&noop=true&filter=#orderCsvFilter
+jms:
+  orders:
+    uri: jms:queue:incomingOrders
+
+spring:
+  activemq:
+    in-memory: true
+    pool:
+      enabled: false
