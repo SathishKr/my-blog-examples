@@ -13,5 +13,5 @@ some example files, the vagrant sync is already setup, so you can add the files 
 source tree to see it synched with Vagrant box under `/home/vagrant/orders` which will be used by the Camel
 FTP component
 
-Once the FTP server is up you can run the application using `mvn spring-boot:run` to start the Camel route
+Once the FTP server is up you can run the application using `mvn camel:run` to start the Camel route
 and start processing the files FTP server
